@@ -1,0 +1,25 @@
+/*Complete the function below
+Node is as follows:
+struct Node{
+	int data;
+	Node *left,*right;
+	Node(int d){
+		data=d;
+		left=right=NULL;
+	}
+};*/
+
+int visitNode(Node *root,int k, int currSum) {
+    if (node == nullptr) return 0;
+    currSum += node->data;
+    if (currSum > k) return 0;
+    if (currSum == k) return 1;
+    return visitNode(node->left, k, currSum) + visitNode(node->right, k, currSum);
+}
+
+int printCount(Node *root,int k)
+{
+    
+//add code here.
+    return visitNode(root, k, 0);
+}
