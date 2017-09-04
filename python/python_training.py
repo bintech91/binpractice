@@ -1,10 +1,10 @@
-a = input("your height in cm: ")
-b = input("your weight in kg: ")
-ratio = float(a)/ float(b)
-
-print "Your ratio is: " + str(ratio) + "\n"
-
-if ratio < 7/2 and ratio > 5/2:
-    print "Golden Ratio\n"
-
-print "Complete Test"
+condition = True
+while condition:
+    print ("Please answer a Yes/No question")
+    answer = raw_input("Are you hungry: ")
+    if answer == "Yes" or answer == "yes" or answer == "y" or answer == "Y":
+        print "you are hungry"
+        break
+    elif answer == "No" or answer == "no" or answer == "n" or answer == "N":
+        print "you are not hungry"
+        break
