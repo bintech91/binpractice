@@ -22,23 +22,26 @@ void solution() {
 	}
 
 	sort(v_choco.begin(), v_choco.end());
-
 	int cur = 0;
+	int cur_i = 0;
 	int oper = 0;
+	int improve = 0;
 	bool init = false;
 	for (int i : v_choco) {
 		if (init == false) {
 			init = true;
+			cur = i;
 			continue;
 		}
-		if (i > cur) {
-			oper += calculation_gap_operation(i - cur);
-			i = cur;
+		int improve_i = i + improve;
+		if (improve_i > cur) {
+			int gap_oper = calculation_gap_operation(improve_i - cur);
+			improve += improve_i - cur;
+			oper = oper + gap_oper;
 		}
+		cur  = improve_i;
 	}
-
 	cout << oper << endl;
-
 }
 
 int calculation_gap_operation(int gap) {
@@ -46,11 +49,11 @@ int calculation_gap_operation(int gap) {
 		return gap_operation[gap];
 	}
 	int op_5 = (gap / 5);
-	int gap_op_3 = gap - op_5 * 5;
-	int op_3 = gap_op_3 / 3;
-	int gap_op_1 = gap_op_3 - op_3 * 3;
+	int gap_op_2 = gap - op_5 * 5;
+	int op_2 = gap_op_2 / 2;
+	int gap_op_1 = gap_op_2 - op_2* 2;
 	int op_1 = gap_op_1;
-	gap_operation[gap] = op_5 + op_3 + op_1;
+	gap_operation[gap] = op_5 + op_2 + op_1;
 	return gap_operation[gap];
 }
 int main() {
